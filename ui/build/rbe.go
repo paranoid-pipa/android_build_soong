@@ -117,7 +117,7 @@ func startRBE(ctx Context, config Config) {
 	ctx.BeginTrace(metrics.RunSetupTool, "rbe_bootstrap")
 	defer ctx.EndTrace()
 
-	ctx.Status.Status("Starting rbe...")
+	ctx.Status.Status("Starting ninja...")
 
 	cmd := Command(ctx, config, "startRBE bootstrap", rbeCommand(ctx, config, bootstrapCmd))
 
@@ -130,7 +130,7 @@ func stopRBE(ctx Context, config Config) {
 	cmd := Command(ctx, config, "stopRBE bootstrap", rbeCommand(ctx, config, bootstrapCmd), "-shutdown")
 	output, err := cmd.CombinedOutput()
 	if err != nil {
-		ctx.Fatalf("rbe bootstrap with shutdown failed with: %v\n%s\n", err, output)
+		ctx.Fatalf("soong bootstrap with shutdown failed with: %v\n%s\n", err, output)
 	}
 
 	if !config.Environment().IsEnvTrue("ANDROID_QUIET_BUILD") && len(output) > 0 {
