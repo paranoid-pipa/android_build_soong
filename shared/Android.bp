@@ -18,4 +18,6 @@ bootstrap_go_package {
         "soong-bazel",
         "golang-protobuf-proto",
     ],
+    // Used by plugins
+    visibility: ["//visibility:public"],
 }
